@@ -1,6 +1,14 @@
+import 'package:app/components/customButton.dart';
+import 'package:app/components/customInputField.dart';
 import 'package:flutter/material.dart';
 
 class Perfil extends StatelessWidget {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  // sign user in method
+  void signUserIn() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,8 +18,9 @@ class Perfil extends StatelessWidget {
             flex: 4,
             child: Container(
               alignment: Alignment.center,
+              padding: EdgeInsets.all(5),
               child: Image.asset(
-                'assets/logoEditada.png',
+                'lib/assets/logoEditada.png',
               ),
             ),
           ),
@@ -20,41 +29,36 @@ class Perfil extends StatelessWidget {
             child: Container(
               child: Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(11),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Email',
-                        hintText: 'Email',
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: TextFormField(
+                  CustomInputField(
+                      controller: emailController,
+                      hintText: "Email",
+                      obscureText: false,
+                      labeltext: "Email"),
+                  CustomInputField(
+                      controller: passwordController,
+                      hintText: "Senha",
                       obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Senha',
-                        hintText: 'Senha',
-                      ),
+                      labeltext: "Senha"),
+                  const SizedBox(height: 15),
+
+                  // forgot password?
+
+                  // sign in button
+                  CustomButton(
+                    onTap: signUserIn,
+                  ),
+
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Não Possui Cadastro? Clique aqui',
+                            style: TextStyle(color: Colors.blue)),
+                      ],
                     ),
                   ),
-                  Container(
-                    width: 200,
-                    height: 40,
-                    margin: EdgeInsets.only(top: 24),
-                    child: ElevatedButton(
-                      child: Text("Entrar"),
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.red,
-                        elevation: 0,
-                      ),
-                      onPressed: () {},
-                    ),
-                  )
                 ],
               ),
             ),
