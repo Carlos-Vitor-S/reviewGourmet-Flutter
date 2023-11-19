@@ -16,7 +16,7 @@ class Reviews extends StatelessWidget {
         elevation: 1000,
         backgroundColor: reviewgourmet,
         shadowColor: Colors.black,
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 18),
         foregroundColor: Colors.white,
       ),
       body: Column(

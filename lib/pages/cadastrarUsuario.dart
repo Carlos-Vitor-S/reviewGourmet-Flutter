@@ -6,8 +6,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CadastrarUsuario extends StatelessWidget {
+  final nomeController = TextEditingController();
+  final dataNascimentoController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  //endereços
+  final estadoController = TextEditingController();
+  final cidadeController = TextEditingController();
+  final cepController = TextEditingController();
+  final ruaController = TextEditingController();
+  final bairroController = TextEditingController();
+  final numeroCasaController = TextEditingController();
   void createUser() {}
   @override
   Widget build(BuildContext context) {
@@ -23,95 +32,32 @@ class CadastrarUsuario extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListView(children: <Widget>[
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: passwordController,
-              hintText: "Senha",
-              obscureText: true,
-              labeltext: "Senha"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          CustomInputField(
-              controller: emailController,
-              hintText: "Email",
-              obscureText: false,
-              labeltext: "Email"),
-          Container(
-              width: 200, height: 40, child: CustomButton(onTap: createUser))
-        ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ListView(children: <Widget>[
+              CustomInputField(
+                controller: nomeController,
+                hintText: "Nome",
+                obscureText: false,
+                labeltext: "Nome",
+              ),
+              CustomInputField(
+                controller: cidadeController,
+                hintText: "Cidade",
+                obscureText: false,
+                labeltext: "Cidade",
+              ),
+            ]),
+
+            // ... outros CustomInputField ...
+
+            ElevatedButton(
+              onPressed: createElement,
+              child: Text("Criar"),
+            ),
+          ],
+        ),
       ),
     );
   }

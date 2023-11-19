@@ -25,7 +25,6 @@ class CustomInputField extends StatelessWidget {
             fillColor: Colors.white,
             border: OutlineInputBorder(
                 borderSide: BorderSide(
-              color: Colors.grey,
               width: 2.0,
               style: BorderStyle.solid,
             )),
