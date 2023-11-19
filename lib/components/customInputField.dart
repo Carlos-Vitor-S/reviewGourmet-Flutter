@@ -5,13 +5,15 @@ class CustomInputField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final String labeltext;
+  final int? width;
 
   const CustomInputField(
       {super.key,
       required this.controller,
       required this.hintText,
       required this.obscureText,
-      required this.labeltext});
+      required this.labeltext,
+      this.width});
 
   @override
   Widget build(BuildContext context) {
