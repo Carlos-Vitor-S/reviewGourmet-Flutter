@@ -1,4 +1,6 @@
 import 'package:app/components/customCard.dart';
+import 'package:app/paleta_cores.dart';
+
 import 'package:flutter/material.dart';
 
 class Reviews extends StatelessWidget {
@@ -7,8 +9,17 @@ class Reviews extends StatelessWidget {
   final String nome = "Hamburgueria X";
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Meus Reviews"),
+        elevation: 1000,
+        backgroundColor: reviewgourmet,
+        shadowColor: Colors.black,
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
         children: [
           CustomCard(
             caminhoAsset: asset,

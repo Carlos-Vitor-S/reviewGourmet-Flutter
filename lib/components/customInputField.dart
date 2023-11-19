@@ -21,7 +21,14 @@ class CustomInputField extends StatelessWidget {
           controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+                borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+              style: BorderStyle.solid,
+            )),
             labelText: labeltext,
             hintText: hintText,
           )),

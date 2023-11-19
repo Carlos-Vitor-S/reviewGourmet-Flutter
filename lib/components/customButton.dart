@@ -1,3 +1,4 @@
+import 'package:app/paleta_cores.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -21,8 +22,8 @@ class CustomButton extends StatelessWidget {
             )),
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
-              backgroundColor: Colors.red,
-              elevation: 0,
+              backgroundColor: reviewgourmet,
+              elevation: 2,
             ),
             onPressed: () {},
           ),

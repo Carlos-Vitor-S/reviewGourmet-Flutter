@@ -1,5 +1,7 @@
 import 'package:app/components/customButton.dart';
 import 'package:app/components/customInputField.dart';
+import 'package:app/pages/cadastrarUsuario.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Perfil extends StatelessWidget {
@@ -39,6 +41,7 @@ class Perfil extends StatelessWidget {
                       hintText: "Senha",
                       obscureText: true,
                       labeltext: "Senha"),
+
                   const SizedBox(height: 15),
 
                   // forgot password?
@@ -50,12 +53,23 @@ class Perfil extends StatelessWidget {
 
                   const SizedBox(height: 15),
                   Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Não Possui Cadastro? Clique aqui',
-                            style: TextStyle(color: Colors.blue)),
+                        TextButton(
+                          child: Text("Ainda Não Possui Cadastro?",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 6, 65, 112),
+                                fontSize: 13,
+                              )),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CadastrarUsuario()));
+                          },
+                        )
                       ],
                     ),
                   ),
