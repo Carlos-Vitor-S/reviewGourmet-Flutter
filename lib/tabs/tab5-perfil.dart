@@ -1,6 +1,7 @@
 import 'package:app/components/customButton.dart';
 import 'package:app/components/customInputField.dart';
 import 'package:app/pages/cadastrarUsuario.dart';
+import 'package:app/pages/perfilEfetuado.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class Perfil extends StatelessWidget {
   void signUserIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, password: passwordController.text);
+    print(emailController.text);
+    print(passwordController.text);
   }
 
   @override
@@ -32,53 +35,51 @@ class Perfil extends StatelessWidget {
           ),
           Expanded(
             flex: 6,
-            child: Container(
-              child: Column(
-                children: [
-                  CustomInputField(
-                      controller: emailController,
-                      hintText: "Email",
-                      obscureText: false,
-                      labeltext: "Email"),
-                  CustomInputField(
-                      controller: passwordController,
-                      hintText: "Senha",
-                      obscureText: true,
-                      labeltext: "Senha"),
+            child: Column(
+              children: [
+                CustomInputField(
+                    controller: emailController,
+                    hintText: "Email",
+                    obscureText: false,
+                    labeltext: "Email"),
+                CustomInputField(
+                    controller: passwordController,
+                    hintText: "Senha",
+                    obscureText: true,
+                    labeltext: "Senha"),
 
-                  const SizedBox(height: 15),
+                const SizedBox(height: 15),
 
-                  // forgot password?
+                // forgot password?
 
-                  // sign in button
-                  CustomButton(
-                    onTap: signUserIn,
+                // sign in button
+                CustomButton(onTap: () {
+                  signUserIn();
+                }),
+
+                const SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        child: Text("Ainda Não Possui Cadastro?",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 6, 65, 112),
+                              fontSize: 13,
+                            )),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CadastrarUsuario()));
+                        },
+                      )
+                    ],
                   ),
-
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          child: Text("Ainda Não Possui Cadastro?",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 6, 65, 112),
-                                fontSize: 13,
-                              )),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CadastrarUsuario()));
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

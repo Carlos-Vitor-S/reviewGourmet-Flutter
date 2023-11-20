@@ -1,7 +1,8 @@
 import 'package:app/app.dart';
+import 'package:app/pages/cadastrarLocal.dart';
+
 import 'package:app/pages/perfilEfetuado.dart';
-import 'package:app/tabs/tab1-home.dart';
-import 'package:app/tabs/tab5-perfil.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

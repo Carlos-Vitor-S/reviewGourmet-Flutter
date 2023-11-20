@@ -1,4 +1,6 @@
+import 'package:app/pages/auth.page.dart';
 import 'package:app/paleta_cores.dart';
+import 'package:app/tabs/tab1-home.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.white,
           ),
         ),
-        home: App(),
+        home: AuthPage(),
       ),
     );
   }

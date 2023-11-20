@@ -15,18 +15,17 @@ class CustomButton extends StatelessWidget {
           height: 40,
           margin: EdgeInsets.only(top: 9),
           child: ElevatedButton(
-            child: const Center(
-                child: Text(
-              "Entrar",
-              style: TextStyle(fontSize: 16),
-            )),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: reviewgourmet,
-              elevation: 2,
-            ),
-            onPressed: () {},
-          ),
+              child: const Center(
+                  child: Text(
+                "Entrar",
+                style: TextStyle(fontSize: 16),
+              )),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: reviewgourmet,
+                elevation: 2,
+              ),
+              onPressed: onTap),
         ));
   }
 }
