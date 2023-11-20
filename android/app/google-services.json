@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "702446714552",
+    "project_id": "reviewgourmet-fire",
+    "storage_bucket": "reviewgourmet-fire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702446714552:android:29d364ff0e55b09e05fe4d",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYMf_9c1SooWNR1zg1FxIleNS8Ad4EiXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

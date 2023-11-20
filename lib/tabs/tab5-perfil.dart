@@ -1,6 +1,7 @@
 import 'package:app/components/customButton.dart';
 import 'package:app/components/customInputField.dart';
 import 'package:app/pages/cadastrarUsuario.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,11 @@ class Perfil extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  // sign user in method email e senha
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
