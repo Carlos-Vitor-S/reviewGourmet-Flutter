@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:app/components/customButton.dart';
 import 'package:app/components/customInputField.dart';
 import 'package:app/pages/cadastrarUsuario.dart';
@@ -6,16 +8,35 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Perfil extends StatelessWidget {
+class Perfil extends StatefulWidget {
+  @override
+  State<Perfil> createState() => _PerfilState();
+}
+
+class _PerfilState extends State<Perfil> {
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   // sign user in method email e senha
-  void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
-    print(emailController.text);
-    print(passwordController.text);
+  void signUserIn(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Login bem-sucedido"),
+            content: Text("O usuário foi logado com sucesso."),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (error) {
+      //Se o Email estiver errado
+
+      //Se a senha estiver errada
+    }
   }
 
   @override
@@ -54,7 +75,7 @@ class Perfil extends StatelessWidget {
 
                 // sign in button
                 CustomButton(onTap: () {
-                  signUserIn();
+                  signUserIn(context);
                 }),
 
                 const SizedBox(height: 15),

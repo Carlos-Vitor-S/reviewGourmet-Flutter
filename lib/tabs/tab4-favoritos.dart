@@ -13,7 +13,7 @@ class Favoritos extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Meus Reviews"),
+        title: Text("Meus Favoritos"),
         elevation: 1000,
         backgroundColor: reviewgourmet,
         shadowColor: Colors.black,

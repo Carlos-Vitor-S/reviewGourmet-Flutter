@@ -1,19 +1,19 @@
-import 'package:app/pages/redirecionar.dart';
+import 'package:app/pages/perfilEfetuado.dart';
 import 'package:app/tabs/tab1-home.dart';
 import 'package:app/tabs/tab2-reviews.dart';
 import 'package:app/tabs/tab3-adicionar-review.dart';
 import 'package:app/tabs/tab5-perfil.dart';
 import 'package:app/tabs/tab4-favoritos.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class App extends StatefulWidget {
-  const App({super.key});
-
+class AuthTabs extends StatefulWidget {
   @override
-  State<App> createState() => _AppState();
+  State<AuthTabs> createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<AuthTabs> {
+  final userAtual = FirebaseAuth.instance.currentUser?.displayName;
   int _selectIndex = 0;
   void _navigationBottomBar(int index) {
     setState(() {
@@ -25,10 +25,10 @@ class _AppState extends State<App> {
 
   final List<Widget> _pages = [
     Home(),
-    Redirecionar(),
-    Redirecionar(),
-    Redirecionar(),
-    Perfil(),
+    Reviews(),
+    AdicionarReview(),
+    Favoritos(),
+    PerfilEfetuado()
   ];
 
   @override

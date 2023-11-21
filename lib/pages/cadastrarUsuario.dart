@@ -1,8 +1,14 @@
 // ignore: file_names
+import 'dart:js';
+
+import 'package:app/app.dart';
 import 'package:app/components/customButton.dart';
 import 'package:app/components/customInputField.dart';
+import 'package:app/pages/auth.page.dart';
 
 import 'package:app/paleta_cores.dart';
+import 'package:app/tabs/tab5-perfil.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +24,26 @@ class CadastrarUsuario extends StatelessWidget {
   final bairroController = TextEditingController();
   final estadoController = TextEditingController();
   final cepController = TextEditingController();
-  
-  void createUser() {}
+
+  void createUser(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text, password: senhaController.text);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Usuário Cadastrado com Sucesso"),
+            content: Text("Você foi cadastrado e logado com sucesso."),
+          );
+        },
+      );
+
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => AuthPage()));
+    } on FirebaseAuthException catch (error) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,67 +59,69 @@ class CadastrarUsuario extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(children: <Widget>[
-                CustomInputField(
-                      controller: nomeController,
-                      hintText: "Nome",
-                      obscureText: false,
-                      labeltext: "Insira seu nome"),
-                  CustomInputField(
-                      controller: sobrenomeController,
-                      hintText: "Sobrenome",
-                      obscureText: false,
-                      labeltext: "Insira seu sobrenome"),
-                  CustomInputField(
-                      controller: dataDeNascimentoController,
-                      hintText: "DataDeNascimento",
-                      obscureText: false,
-                      labeltext: "Insira sua Data de Nascimento"),
-                  CustomInputField(
-                      controller: emailController,
-                      hintText: "Email",
-                      obscureText: false,
-                      labeltext: "Insira seu Email"),
-                  CustomInputField(
-                      controller: senhaController,
-                      hintText: "Senha",
-                      obscureText: true,
-                      labeltext: "Insira uma Senha"),
-                  CustomInputField(
-                      controller: cidadeController,
-                      hintText: "Cidade",
-                      obscureText: false,
-                      labeltext: "Insira sua Cidade"),
-                  CustomInputField(
-                      controller: ruaController,
-                      hintText: "Rua",
-                      obscureText:false,
-                      labeltext: "Insira sua Rua"),
-                  CustomInputField(
-                      controller: bairroController,
-                      hintText: "Bairro",
-                      obscureText:false,
-                      labeltext: "Insira seu Bairro"),
-                  CustomInputField(
-                      controller: numeroController,
-                      hintText: "Número Residêncial",
-                      obscureText:false,
-                      labeltext: "Insira o Número da sua Residência"),
-                  CustomInputField(
-                      controller: estadoController,
-                      hintText: "Estado",
-                      obscureText:false,
-                      labeltext: "Insira seu Estado"),
-                  CustomInputField(
-                      controller: cepController,
-                      hintText: "CEP",
-                      obscureText: false,
-                      labeltext: "Insira CEP"),
-                      
-                  Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                      width: 200, height: 40, child: CustomButton(onTap: createUser)),
-          ),              
+          CustomInputField(
+              controller: nomeController,
+              hintText: "Nome",
+              obscureText: false,
+              labeltext: "Insira seu nome"),
+          CustomInputField(
+              controller: sobrenomeController,
+              hintText: "Sobrenome",
+              obscureText: false,
+              labeltext: "Insira seu sobrenome"),
+          CustomInputField(
+              controller: dataDeNascimentoController,
+              hintText: "DataDeNascimento",
+              obscureText: false,
+              labeltext: "Insira sua Data de Nascimento"),
+          CustomInputField(
+              controller: emailController,
+              hintText: "Email",
+              obscureText: false,
+              labeltext: "Insira seu Email"),
+          CustomInputField(
+              controller: senhaController,
+              hintText: "Senha",
+              obscureText: true,
+              labeltext: "Insira uma Senha"),
+          CustomInputField(
+              controller: cidadeController,
+              hintText: "Cidade",
+              obscureText: false,
+              labeltext: "Insira sua Cidade"),
+          CustomInputField(
+              controller: ruaController,
+              hintText: "Rua",
+              obscureText: false,
+              labeltext: "Insira sua Rua"),
+          CustomInputField(
+              controller: bairroController,
+              hintText: "Bairro",
+              obscureText: false,
+              labeltext: "Insira seu Bairro"),
+          CustomInputField(
+              controller: numeroController,
+              hintText: "Número Residêncial",
+              obscureText: false,
+              labeltext: "Insira o Número da sua Residência"),
+          CustomInputField(
+              controller: estadoController,
+              hintText: "Estado",
+              obscureText: false,
+              labeltext: "Insira seu Estado"),
+          CustomInputField(
+              controller: cepController,
+              hintText: "CEP",
+              obscureText: false,
+              labeltext: "Insira CEP"),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: 200,
+              height: 40,
+              child: CustomButton(onTap: () => createUser(context)),
+            ),
+          )
         ]),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:app/app.dart';
+import 'package:app/pages/authTabs.dart';
 import 'package:app/pages/cadastrarLocal.dart';
 
 import 'package:app/pages/perfilEfetuado.dart';
@@ -17,7 +18,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           //Ver se o Usuario está Logado ou não
           if (snapshot.hasData) {
-            return PerfilEfetuado();
+            return AuthTabs();
           } else {
             return App();
           }
